@@ -18,7 +18,15 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="pt-br">
+      <head>
+        <meta charSet="utf-8" />
+        <meta
+          name="viewpoint"
+          content="width=device-width" 
+        />
+
+      </head>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         {children}
       </body>
