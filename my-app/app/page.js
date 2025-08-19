@@ -7,6 +7,8 @@ export default function Home() {
       <p>
         Como anda a vida companheiro?
       </p>
+      
+
     </div>
   );
 }
