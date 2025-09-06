@@ -12,7 +12,7 @@ export default function ProfileList() {
   return (
     <div style={person.theme}>
       <h1>{person.name}'s TADC</h1>
-      <img
+      <Image
         width={115} height={100}
         className="avatar"
         src="https://pbs.twimg.com/media/Gt8bWmdW4AA8avZ.jpg"
@@ -29,7 +29,7 @@ export default function ProfileList() {
 
 export function Profile() {
   return (
-    <img
+    <Image
       width={150}
       src="https://i.pinimg.com/736x/6b/7c/d5/6b7cd5dfdd768d556563a7ba6bfe4789.jpg"
       alt="Ragatha - TADC"
