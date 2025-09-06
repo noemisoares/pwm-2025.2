@@ -23,9 +23,9 @@ export default function RootLayout({ children }) {
         <meta charSet="utf-8" />
         <meta
           name="viewpoint"
-          content="width=device-width" 
+          content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
-
+        <meta description="Site de exemplo da disciplina Programação Web e Mobile da UNICAP" />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         {children}
