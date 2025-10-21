@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 
 const person = {
   name: 'Ragatha',
@@ -12,7 +13,7 @@ export default function ProfileList() {
   return (
     <div style={person.theme}>
       <h1>{person.name}'s TADC</h1>
-      <img
+      <Image
         width={115} height={100}
         className="avatar"
         src="https://pbs.twimg.com/media/Gt8bWmdW4AA8avZ.jpg"
@@ -20,7 +21,7 @@ export default function ProfileList() {
       />
       <ul>
         <li>Um ragdoll vivo com cabelo vermelho</li>
-        <li>"the sweetest little optimist."</li>
+        <li>&quotthe sweetest little optimist.&quot</li>
         <li>Princess</li>
       </ul>
     </div>
