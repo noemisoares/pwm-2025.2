@@ -2,11 +2,21 @@ import { addTask, deleteTask, getTasks, updateTask } from "@/api";
 import { CardTask } from "@/components/CardTask";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
-import { Button, FlatList, Text, TextInput, View } from "react-native";
+import {
+  Box,
+  Button,
+  FlatList,
+  HStack,
+  Input,
+  Spinner,
+  Text,
+  VStack,
+} from "native-base";
 
 export default function TaskList() {
   const [description, setDescription] = useState("");
   const queryClient = useQueryClient();
+
   const { data, isFetching, error, isPending } = useQuery({
     queryKey: ["todos"],
     queryFn: getTasks,
@@ -34,38 +44,40 @@ export default function TaskList() {
     },
   });
 
-  if (isFetching) {
-    return <Text>Loading...</Text>;
-  }
-  if (error) {
-    return <Text>Error: {error.message}</Text>;
-  }
-  if (!data) {
-    return <Text>No data available</Text>;
-  }
+  if (isFetching) return <Spinner mt={10} size="lg" color="purple.500" />;
+  if (error) return <Text color="red.500">Erro: {error.message}</Text>;
+  if (!data) return <Text>Nenhuma tarefa encontrada.</Text>;
+
   return (
-    <View>
-      <Text style={{ fonteSize: 24, fontWeight: "bold" }}>Task List</Text>
-      <View style={{ flexDirection: "row" }}>
-        <TextInput
-          placeholder="Add a task"
+    <VStack flex={1} p={5} space={4}>
+      <Text fontSize="2xl" fontWeight="bold">
+        Task List
+      </Text>
+
+      <HStack space={3} alignItems="center">
+        <Input
+          flex={1}
+          placeholder="Adicionar uma tarefa"
           value={description}
           onChangeText={setDescription}
         />
         <Button
-          title="Add"
+          colorScheme="purple"
           onPress={() => addMutation.mutate({ description })}
-        />
-      </View>
-      <View
-        style={{
-          marginVertical: 5,
-          backgroundColor: "grey",
-          width: "90%",
-          height: 2,
-          alignSelf: "center",
-        }}
+        >
+          Adicionar
+        </Button>
+      </HStack>
+
+      <Box
+        mt={2}
+        bg="gray.400"
+        h="1px"
+        alignSelf="center"
+        w="90%"
+        borderRadius="md"
       />
+
       <FlatList
         data={data.results}
         keyExtractor={(item) => item.objectId}
@@ -78,7 +90,12 @@ export default function TaskList() {
           />
         )}
       />
-      {isPending && <Text>Pending...</Text>}
-    </View>
+
+      {isPending && (
+        <Text alignSelf="center" mt={2} color="gray.500">
+          Atualizando...
+        </Text>
+      )}
+    </VStack>
   );
 }
