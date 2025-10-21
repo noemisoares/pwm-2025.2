@@ -17,7 +17,7 @@ export default function ProfileList() {
         width={115}
         height={100}
         className="avatar"
-        src="https://pbs.twimg.com/media/Gt8bWmdW4AA8avZ.jpg"
+        src="/images/ragatha_anime.jpg"
         alt="Ragatha's"
       />
       <ul>
@@ -34,7 +34,7 @@ export function Profile() {
     <Image
       width={150}
       height={150}
-      src="https://i.pinimg.com/736x/6b/7c/d5/6b7cd5dfdd768d556563a7ba6bfe4789.jpg"
+      src="/images/dollface.jpg"
       alt="Ragatha - TADC"
     />
   );
