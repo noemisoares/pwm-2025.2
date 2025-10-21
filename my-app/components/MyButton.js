@@ -11,7 +11,7 @@ export function MyButton() {
 
   return (
     <button onMouseOver={handleMouseOver} onClick={handleClick}>
-      &lsquo'm a button&lsquo
+      I&apos;m a button
     </button>
   );
 }
