@@ -60,7 +60,7 @@ export default function TaskList() {
       <View
         style={{
           marginVertical: 5,
-          backgroundColor: "grey",
+          backgroundColor: "purple",
           width: "90%",
           height: 2,
           alignSelf: "center",

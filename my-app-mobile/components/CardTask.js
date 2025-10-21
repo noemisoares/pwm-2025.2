@@ -6,7 +6,7 @@ export function CardTask({ task, onDelete, onCheck }) {
       <Text>{task.description}</Text>
       <Switch
         trackColor={{ false: "#767577", true: "#81b0ff" }}
-        thumbColor={"#f5dd4b"}
+        thumbColor={"#7b0c97ff"}
         ios_backgroundColor="#3e3e3e"
         onValueChange={() => onCheck(task)}
         value={task.done}

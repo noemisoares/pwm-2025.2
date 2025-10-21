@@ -1,5 +1,6 @@
 import { useRouter } from "expo-router";
 import { useState } from "react";
+
 import {
   Alert,
   Button,
@@ -37,6 +38,7 @@ export default function Index() {
         value={idade}
         placeholder="Qual a sua idade?"
         keyboardType="numeric"
+        placeholderTextColor={"#e2e2e2ff"}
       />
       <View style={styles.buttonsContainer}>
         <Button
@@ -54,6 +56,7 @@ export default function Index() {
       </View>
       <Button
         title="Ir para Lista de Tarefas"
+        color="#841584"
         onPress={() => router.push("/taskList")}
       />
       <View style={styles.space} />
@@ -71,13 +74,14 @@ const styles = StyleSheet.create({
   container: {
     justifyContent: "flex-start",
     alignItems: "center",
-    backgroundColor: "beige",
+    backgroundColor: "#6a296aff",
     padding: 15,
   },
   title: {
     fontSize: 42,
     fontWeight: "bold",
     marginBottom: 30,
+    color: "#e2e2e2ff",
   },
   avatar: {
     width: 300,
@@ -87,6 +91,7 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 16,
     marginTop: 30,
+    color: "#e2e2e2ff",
   },
   input: {
     height: 45,
@@ -94,6 +99,7 @@ const styles = StyleSheet.create({
     margin: 12,
     borderWidth: 1,
     padding: 10,
+    borderColor: "#e2e2e2ff",
   },
   space: {
     height: 70,
