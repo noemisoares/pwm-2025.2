@@ -1,17 +1,37 @@
-import { Button, Switch, View, Text } from "react-native";
+import { Box, HStack, Text, Switch, IconButton, Icon } from "native-base"; 
+import { MaterialIcons } from "@expo/vector-icons";
 
 export function CardTask({ task, onDelete, onCheck }) {
   return (
-    <View>
-      <Text>{task.description}</Text>
-      <Switch
-        trackColor={{ false: "#767577", true: "#81b0ff" }}
-        thumbColor={"#f5dd4b"}
-        ios_backgroundColor="#3e3e3e"
-        onValueChange={() => onCheck(task)}
-        value={task.done}
-      />
-      <Button title="X" onPress={() => onDelete(task.objectId)} />
-    </View>
+    <Box
+      p="3"
+      mb="2"
+      borderRadius="lg"
+      borderWidth="1"
+      borderColor={task.done ? "green" : "purple"}
+      bg={task.done ? "#DFFFD6" : "white"}
+    >
+      <HStack alignItems="center" justifyContent="space-between">
+        <HStack alignItems="center" space="3">
+          <Switch
+            isChecked={task.done}
+            onToggle={() => onCheck(task)}
+            size="md"
+            onTrackColor="#841584"
+            offTrackColor="#767577"
+          />
+          <Text strikeThrough={task.done} color={task.done ? "gray" : "black"}>
+            {task.description}
+          </Text>
+        </HStack>
+
+        <IconButton
+          icon={<Icon as={MaterialIcons} name="delete" color="red" />}
+          onPress={() => onDelete(task.objectId)}
+          borderRadius="full"
+          _pressed={{ bg: "#FFCCCC" }}
+        />
+      </HStack>
+    </Box>
   );
 }

@@ -1,6 +1,7 @@
 import React from "react";
-import { View, FlatList, StyleSheet, Text, StatusBar } from "react-native";
-import { SafeAreaView, SafeAreaProvider } from "react-native-safe-area-context";
+import { FlatList } from "react-native";
+import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
+import { Box, Text, VStack, Center } from "native-base";
 
 const DATA = [
   {
@@ -27,38 +28,27 @@ const DATA = [
 })();
 
 const Item = ({ title }) => (
-  <View style={styles.item}>
-    <Text style={styles.title}>{title}</Text>
-  </View>
+  <Box
+    bg="#c6edd1ff"
+    p="5"
+    my="2"
+    mx="4"
+    borderRadius="md"
+  >
+    <Text fontSize="2xl">{title}</Text>
+  </Box>
 );
 
 export const FlatListExample = () => (
   <SafeAreaProvider>
-    <SafeAreaView style={styles.container}>
-      <FlatList
-        data={DATA}
-        renderItem={({ item }) => <Item title={item.title} />}
-        keyExtractor={(item) => item.id}
-      />
+    <SafeAreaView style={{ flex: 1 }}>
+      <VStack flex={1} bg="beige">
+        <FlatList
+          data={DATA}
+          renderItem={({ item }) => <Item title={item.title} />}
+          keyExtractor={(item) => item.id}
+        />
+      </VStack>
     </SafeAreaView>
   </SafeAreaProvider>
 );
-
-// console.log("StatusBar.currentHeight", StatusBar.currentHeight);
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    // marginTop: StatusBar.currentHeight ?? 0,
-    backgroundColor: "beige",
-  },
-  item: {
-    backgroundColor: "#c6edd1ff",
-    padding: 20,
-    marginVertical: 8,
-    marginHorizontal: 16,
-  },
-  title: {
-    fontSize: 32,
-  },
-});

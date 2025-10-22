@@ -2,11 +2,12 @@ import axios from "axios";
 
 const headerJson = {
   "Content-Type": "application/json",
+  Accept: "application/json",
 };
 
 const instance = axios.create({
   baseURL: "https://parseapi.back4app.com",
-  timeout: 1000,
+  timeout: 5000,
   headers: {
     "X-Parse-Application-Id": "b44WHXPs2YqHDajovVVALA8b6labKQP4nDbR2WsG",
     "X-Parse-JavaScript-Key": "SJvyjqtUsQlMIdYeckPIv5FNT7sILBDmBnmQVSCN",

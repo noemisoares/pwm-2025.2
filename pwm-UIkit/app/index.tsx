@@ -1,16 +1,7 @@
 import { useRouter } from "expo-router";
 import { useState } from "react";
-import {
-  Alert,
-  Button,
-  Image,
-  Pressable,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TextInput,
-  View,
-} from "react-native";
+import { Alert, Image, Pressable } from "react-native";
+import { VStack, HStack, Text, Input, Button, Box, ScrollView } from "native-base";
 // import { FlatListExample } from "@/components/FlatListExample";
 import { SectionListExample } from "@/components/SectionListExample";
 
@@ -19,52 +10,69 @@ export default function Index() {
   const [idade, onChangeIdade] = useState("");
   const [showDetails, setShowDetails] = useState(true);
   const anoNasc = new Date().getFullYear() - parseInt(idade);
+
   return (
-    <ScrollView contentContainerStyle={styles.container}>
-      <Text style={styles.title}>Olá Turma!</Text>
-      <Image
-        style={styles.avatar}
-        source={require("@/assets/images/avatar.jpg")}
-        resizeMode="cover"
-      />
-      <Pressable
-        onPress={() => {
-          setShowDetails(!showDetails);
-        }}
+    <ScrollView>
+      <VStack
+        justifyContent="flex-start"
+        alignItems="center"
+        bg="beige"
+        p={4}
+        space={4}
       >
-        <Text numberOfLines={showDetails ? 0 : 1} style={styles.text}>
-          Este é um App de exemplo da disciplina Programação Web e Mobile do
-          Curso de Ciência da Computação da Universidade Católica de Pernambuco
-          (semestre 2025.2)
+        <Text fontSize={42} fontWeight="bold" mb={8}>
+          Olá Turma!
         </Text>
-      </Pressable>
-      {!isNaN(anoNasc) && <Text>Você nasceu em {anoNasc}</Text>}
-      <TextInput
-        style={styles.input}
-        onChangeText={onChangeIdade}
-        value={idade}
-        placeholder="Qual a sua idade?"
-        keyboardType="numeric"
-      />
-      <View style={styles.buttonsContainer}>
-        <Button
-          onPress={() => Alert.alert("Botão OK pressionado")}
-          title="     OK     "
-          color="#841584"
-          accessibilityLabel="Learn more about this purple button"
+
+        <Image
+          style={{ width: 150, height: 150, borderRadius: 75 }}
+          source={require("@/assets/images/avatar.jpg")}
         />
-        <Button
-          onPress={() => Alert.alert("Botão Cancel pressionado")}
-          title="Cancel"
-          color="#841584"
-          accessibilityLabel="Learn more about this purple button"
+
+        <Pressable onPress={() => setShowDetails(!showDetails)}>
+          <Text mt={8} fontSize={16} numberOfLines={showDetails ? 0 : 1}>
+            Este é um App de exemplo da disciplina Programação Web e Mobile do
+            Curso de Ciência da Computação da Universidade Católica de Pernambuco
+            (semestre 2025.2)
+          </Text>
+        </Pressable>
+
+        {!isNaN(anoNasc) && <Text>Você nasceu em {anoNasc}</Text>}
+
+        <Input
+          mt={4}
+          h={45}
+          w={200}
+          value={idade}
+          onChangeText={onChangeIdade}
+          placeholder="Qual a sua idade?"
+          keyboardType="numeric"
+          borderWidth={1}
+          p={2}
         />
-      </View>
-      <Button
-        title="Ir para Lista de Tarefas"
-        onPress={() => router.navigate("/taskList")}
-      />
-      <View style={styles.space} />
+
+        <HStack space={4} w={250} justifyContent="space-between" mt={4}>
+          <Button
+            onPress={() => Alert.alert("Botão OK pressionado")}
+            bg="#841584"
+          >
+            OK
+          </Button>
+          <Button
+            variant="outline"
+            borderColor="#841584"
+            onPress={() => Alert.alert("Botão Cancel pressionado")}
+          >
+            Cancel
+          </Button>
+        </HStack>
+
+        <Button mt={4} onPress={() => router.navigate("/taskList")}>
+          Ir para Lista de Tarefas
+        </Button>
+
+        <Box h={70} />
+      </VStack>
     </ScrollView>
   );
 }
@@ -74,41 +82,3 @@ function App() {
   // return <FlatListExample />;
   return <SectionListExample />;
 }
-
-const styles = StyleSheet.create({
-  container: {
-    justifyContent: "flex-start",
-    alignItems: "center",
-    backgroundColor: "beige",
-    padding: 15,
-  },
-  title: {
-    fontSize: 42,
-    fontWeight: "bold",
-    marginBottom: 30,
-  },
-  avatar: {
-    width: 150,
-    height: 150,
-    borderRadius: 75,
-  },
-  text: {
-    fontSize: 16,
-    marginTop: 30,
-  },
-  input: {
-    height: 45,
-    width: 200,
-    margin: 12,
-    borderWidth: 1,
-    padding: 10,
-  },
-  space: {
-    height: 70,
-  },
-  buttonsContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    width: 250,
-  },
-});
