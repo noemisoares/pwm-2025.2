@@ -2,8 +2,8 @@ import { addTask, deleteTask, getTasks, updateTask } from "@/api";
 import { CardTask } from "@/components/CardTask";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
-import { FlatList } from "react-native";
-import { Box, Button, Input, Text, VStack, HStack, Divider } from "native-base";
+import { FlatList, TextInput } from "react-native";
+import { Box, Button, Text, VStack, HStack, Divider } from "native-base";
 
 export default function TaskList() {
   const [description, setDescription] = useState("");
@@ -50,8 +50,16 @@ export default function TaskList() {
       <Text fontSize="2xl" fontWeight="bold">Task List</Text>
 
       <HStack space="2">
-        <Input
-          flex={1}
+        <TextInput
+          style={{
+            flex: 1,
+            height: 45,
+            borderColor: "#841584",
+            borderWidth: 1,
+            borderRadius: 8,
+            paddingHorizontal: 8,
+            fontSize: 16,
+          }}
           placeholder="Add a task"
           value={description}
           onChangeText={setDescription}

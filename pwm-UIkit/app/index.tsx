@@ -1,9 +1,7 @@
 import { useRouter } from "expo-router";
 import { useState } from "react";
-import { Alert, Image, Pressable } from "react-native";
-import { VStack, HStack, Text, Input, Button, Box, ScrollView } from "native-base";
-// import { FlatListExample } from "@/components/FlatListExample";
-import { SectionListExample } from "@/components/SectionListExample";
+import { Alert, Image, TextInput } from "react-native";
+import { VStack, HStack, Text, Button, Box, ScrollView, Pressable } from "native-base";
 
 export default function Index() {
   const router = useRouter();
@@ -20,7 +18,7 @@ export default function Index() {
         p={4}
         space={4}
       >
-        <Text fontSize={42} fontWeight="bold" mb={8}>
+        <Text fontSize="4xl" fontWeight="bold" mb={8}>
           Olá Turma!
         </Text>
 
@@ -30,7 +28,7 @@ export default function Index() {
         />
 
         <Pressable onPress={() => setShowDetails(!showDetails)}>
-          <Text mt={8} fontSize={16} numberOfLines={showDetails ? 0 : 1}>
+          <Text mt={8} fontSize="md" numberOfLines={showDetails ? 0 : 1}>
             Este é um App de exemplo da disciplina Programação Web e Mobile do
             Curso de Ciência da Computação da Universidade Católica de Pernambuco
             (semestre 2025.2)
@@ -39,23 +37,25 @@ export default function Index() {
 
         {!isNaN(anoNasc) && <Text>Você nasceu em {anoNasc}</Text>}
 
-        <Input
-          mt={4}
-          h={45}
-          w={200}
-          value={idade}
-          onChangeText={onChangeIdade}
+        <TextInput
+          style={{
+            marginTop: 16,
+            height: 45,
+            width: 200,
+            borderColor: "#841584",
+            borderWidth: 1,
+            borderRadius: 8,
+            paddingHorizontal: 8,
+            fontSize: 16,
+          }}
           placeholder="Qual a sua idade?"
           keyboardType="numeric"
-          borderWidth={1}
-          p={2}
+          value={idade}
+          onChangeText={onChangeIdade}
         />
 
         <HStack space={4} w={250} justifyContent="space-between" mt={4}>
-          <Button
-            onPress={() => Alert.alert("Botão OK pressionado")}
-            bg="#841584"
-          >
+          <Button onPress={() => Alert.alert("Botão OK pressionado")} bg="#841584">
             OK
           </Button>
           <Button
@@ -75,10 +75,4 @@ export default function Index() {
       </VStack>
     </ScrollView>
   );
-}
-
-// Exemplos de Listas
-function App() {
-  // return <FlatListExample />;
-  return <SectionListExample />;
 }
